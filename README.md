@@ -1,8 +1,9 @@
 
 # Envoyer un PATCH
 
-diff/apply vs format-patch/am
-=> Privilégier le format-patch/am car contient l'auteur et les messages de commit
+`diff`/`apply` vs `format-patch`/`am`
+
+=> Privilégier le `format-patch`/`am` car contient l'auteur et les messages de commit
 
 En savoir plus : https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project#Applying-Patches-from-Email
 
@@ -10,15 +11,17 @@ En savoir plus : https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Pr
 
 # Réécrire une grosse partie de l'historique
 
-Ex : changer son email sur tous les commits avant de déployer en OSS,
-supprimer de tout l'historique un fichier contenant les mots de passe de la base de données.
+Exemples :
+- Changer son email sur tous les commits avant de déployer en OSS,
+- Supprimer de tout l'historique un fichier contenant les mots de passe de la base de données.
 
 En savoir plus : https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#The-Nuclear-Option:-filter-branch
 
 
 # Créer une branche à partir d'un stash
 
-`git stash branch testchanges`
+`$ git stash branch testchanges`
+
 Créer une nouvelle branches à partir du stash le plus récent et bascule dessus.
 
 
@@ -26,6 +29,7 @@ Créer une nouvelle branches à partir du stash le plus récent et bascule dessu
 
 grep dans tous les arbres :
 https://git-scm.com/book/en/v2/Git-Tools-Searching#Git-Grep
+
 Trouver le commit qui a introduit une nouvelle constante :
 https://git-scm.com/book/en/v2/Git-Tools-Searching#Git-Log-Searching  
 
@@ -45,33 +49,36 @@ Supprime les fichiers "untracked" du working directory :
 https://git-scm.com/docs/git-clean
 
 Mode Dry-Run
-$ git clean -d -n
+`$ git clean -d -n`
 
 
 # Supprimer un commit
 
-git reset (local) vs git revert (public)
+`git reset` (local) vs `git revert` (public)
 
 
 # Vue d'ensemble par développeur (ex : pour communication sur le contenu d'une version)
 
-git shortlog
-https://git-scm.com/book/mk/v1/%D0%94%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D0%B8%D1%80%D0%B0%D0%BD-Git-Maintaining-a-Project#The-Shortlog
+`$ git shortlog`
+
+En savoir plus : https://git-scm.com/book/fr/v2/Git-distribu%C3%A9-Maintenance-d%E2%80%99un-projet#Shortlog
 
 
 # Git Flow vs GitHub Flow
 
-Références :
+## Références :
 - http://nvie.com/posts/a-successful-git-branching-model/
 - https://guides.github.com/introduction/flow/
 
-Git Flow = release peu fréquente, branche longue
-GitHub Flow = release quotidienne, branche courte
+> Git Flow = release peu fréquente, branche longue
+> GitHub Flow = release quotidienne, branche courte
 
 => Git Flow déprécié dans le radar Thoughtworks
 
-Utile à l'initialisation du projet :
-$ git commit --allow-empty -m "Initial commit"
+## Utile à l'initialisation du projet :
+
+`$ git commit --allow-empty -m "Initial commit"`
+
 (nécessaire d'avoir un commit pour pouvoir tirer les branches)
 
 
@@ -81,34 +88,35 @@ $ git commit --allow-empty -m "Initial commit"
 Ex : rechercher le commit qui a corrigé telle évolution
 (en considérant que le numéro de l'évolution est présente dans le message de commit)
 
-$ git log --grep "EV33"
+`$ git log --grep "EV33"`
 
 
 # Désactiver le pager (less) par défaut sur certaines commandes
 
 Ex : exporter la commande blame d'un gros fichier dans un fichier texte.
-$ git --no-pager blame FILE > FILE-annotated.txt
+
+`$ git --no-pager blame FILE > FILE-annotated.txt`
 
 
 
 # Corriger un rebase foireux
 
-$ git reflog
+`$ git reflog`
 pour retrouver le SHA1 du précédent commit pointé par HEAD
 
-$ git reset --hard SHA1
+`$ git reset --hard SHA1`
 pour restaurer le working directory et l'index
 
 
 # Merge avancé
 
-Ex :
+Exemples :
 - Prendre mes modifs à chaque conflit automatiquement,
 - Merger en prenant que mes modifications uniquement (faux merge)
 
-$ git merge -Xours maBranche   # résoud les conflits en prenant mes modifs
-$ git merge -Xtheirs maBranche #résoud les conflits en ignorant mes modifs
-$ git merge -s ours maBranche  # merge en prenant que mes modifs
+`$ git merge -Xours maBranche   # résoud les conflits en prenant mes modifs`
+`$ git merge -Xtheirs maBranche #résoud les conflits en ignorant mes modifs`
+`$ git merge -s ours maBranche  # merge en prenant que mes modifs`
 
 En savoir plus : https://git-scm.com/book/tr/v2/Git-Tools-Advanced-Merging#Other-Types-of-Merges
 

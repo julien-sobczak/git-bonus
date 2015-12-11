@@ -115,18 +115,21 @@ Exemples :
 - Merger en prenant que mes modifications uniquement (faux merge)
 
 `$ git merge -Xours maBranche   # résoud les conflits en prenant mes modifs`
+
 `$ git merge -Xtheirs maBranche #résoud les conflits en ignorant mes modifs`
+
 `$ git merge -s ours maBranche  # merge en prenant que mes modifs`
 
 En savoir plus : https://git-scm.com/book/tr/v2/Git-Tools-Advanced-Merging#Other-Types-of-Merges
 
 
-
 # Créer un livrable avec Git
 
+```
 $ git archive master --prefix='project/' | gzip &gt; `git describe master`.tar.gz
 $ ls \*.tar.gz
 v1.6.2-rc1-20-g8c5b85c.tar.gz
+```
 
 En savoir plus : https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project#Preparing-a-Release
 
@@ -146,11 +149,13 @@ Faire le TP en ligne : http://gitimmersion.com/
 
 # Git status moins verbeux
 
+```
 $ git status -s
  M README
 MM Rakefile
 A  lib/git.rb
 M  lib/simplegit.rb
 ?? LICENSE.txt
+```
 
 En savoir plus : https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#Short-Status

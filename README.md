@@ -1,4 +1,3 @@
-## Tips
 
 # Envoyer un PATCH
 
